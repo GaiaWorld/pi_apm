@@ -11,7 +11,7 @@ use fnv::FnvHashMap;
 use parking_lot::RwLock;
 use crossbeam_queue::ArrayQueue;
 
-use pi_atom::Atom;
+use atom::Atom;
 
 /*
 * 最小动态计数器容量

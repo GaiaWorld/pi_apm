@@ -24,7 +24,7 @@ extern crate psutil;
 #[cfg(all(unix, not(target_os="android")))]
 extern crate walkdir;
 
-extern crate pi_atom;
+extern crate atom;
 
 use std::path::PathBuf;
 use std::collections::HashMap;
@@ -61,25 +61,25 @@ pub trait SysSpecialStat {
     fn process_current_pid(&self) -> i32;
 
     /// 获取指定进程详细信息
-    fn process_detal(&self, i32) -> Option<(u32, u32, i64, i64, u32, f64, f64, u64, i64, u64, u64, u64, u64, u64, i32, i64, f64, String, String, String, PathBuf)>;
+    fn process_detal(&self, _: i32) -> Option<(u32, u32, i64, i64, u32, f64, f64, u64, i64, u64, u64, u64, u64, u64, i32, i64, f64, String, String, String, PathBuf)>;
 
     /// 获取指定进程环境
-    fn process_env(&self, i32) -> Option<HashMap<String, String>>;
+    fn process_env(&self, _: i32) -> Option<HashMap<String, String>>;
 
     /// 获取指定进程内存信息
-    fn process_memory(&self, i32) -> Option<(u64, u64, u64, u64, u64, u64)>;
+    fn process_memory(&self, _: i32) -> Option<(u64, u64, u64, u64, u64, u64)>;
 
     /// 获取指定进程文件句柄数量
-    fn process_fd_size(&self, i32) -> Option<usize>;
+    fn process_fd_size(&self, _: i32) -> Option<usize>;
 
     /// 获取指定进程文件句柄信息
-    fn process_fd(&self, i32) -> Option<Vec<(i32, PathBuf)>>;
+    fn process_fd(&self, _: i32) -> Option<Vec<(i32, PathBuf)>>;
 
     /// 获取指定进程的线程id列表
-    fn process_threads(&self, i32) -> Option<Vec<i32>>;
+    fn process_threads(&self, _: i32) -> Option<Vec<i32>>;
 
     /// 获取硬盘分区信息
-    fn disk_part(&self, bool) -> Option<Vec<(String, String, String, String)>>;
+    fn disk_part(&self, _: bool) -> Option<Vec<(String, String, String, String)>>;
 
     /// 获取硬盘占用信息
     fn disk_usage(&self, path: &str) -> Option<(u64, u64, u64, u64, u64, u64, f64)>;

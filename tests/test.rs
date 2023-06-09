@@ -1,12 +1,12 @@
-extern crate pi_atom;
+extern crate atom;
 
-extern crate apm;
+extern crate pi_apm as apm;
 
 use std::time;
 use std::thread;
 use std::sync::atomic::Ordering;
 
-use pi_atom::Atom;
+use atom::Atom;
 
 use apm::common::{NetIPType, NetProtocolType, SysStat};
 #[cfg(any(unix))]
@@ -29,17 +29,17 @@ fn test_common() {
 
     println!("processor count: {}", sys.processor_count());
 
-    println!("cpu usage: {}", sys.cpu_usage());
+    // println!("cpu usage: {}", sys.cpu_usage());
 
     for n in 0..sys.processor_count() {
         println!("processor #{} usage: {}", n, sys.processor_usage(n));
     }
 
-    let usage = sys.processores_usage();
-    println!("cpu usage: {}", usage.0);
-    for u in usage.1 {
-        println!("processor usage: {}", u);
-    }
+    // let usage = sys.processores_usage();
+    // println!("cpu usage: {}", usage.0);
+    // for u in usage.1 {
+    //     println!("processor usage: {}", u);
+    // }
 
     let usage = sys.memory_usage();
     println!("total memory: {}KB", usage.0);
