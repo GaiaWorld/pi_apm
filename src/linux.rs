@@ -17,7 +17,7 @@ use libc;
 use psutil::{cpu, host, memory, process, disk, network};
 use walkdir::{DirEntry, WalkDir};
 
-use ::SysSpecialStat;
+use crate::SysSpecialStat;
 
 /*
 * 默认间隔时长
