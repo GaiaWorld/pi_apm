@@ -15,7 +15,7 @@ use sysinfo::{NetworkExt, System, SystemExt, CpuExt, ProcessExt, ProcessStatus, 
 
 use crate::SysSpecialStat;
 #[cfg(all(unix, not(target_os="android")))]
-use linux::LinuxSysStat;
+use crate::linux::LinuxSysStat;
 
 /*
 * 默认采样间隔时长，单位秒
