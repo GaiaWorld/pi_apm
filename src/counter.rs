@@ -44,7 +44,7 @@ lazy_static! {
 /// 检查指定计数器名称与计数器id是否匹配
 ///
 pub fn check_counter(name: &str, cid: u64) -> bool {
-    Atom::from(name).get_hash() as u64 == cid 
+    Atom::from(name).str_hash() as u64 == cid
 }
 
 ///
@@ -224,7 +224,7 @@ impl PrefCollect {
             return None;
         }
 
-        let cid = target.get_hash();
+        let cid = target.str_hash();
         if let Some(counter) = self.0.dynamic_table.read().get(&(cid as u64)) {
             //存在指定的动态计数器
             return Some(PrefCounter(counter.clone()));
@@ -244,7 +244,7 @@ impl PrefCollect {
             return None;
         }
 
-        let cid = target.get_hash();
+        let cid = target.str_hash();
         if let Some(counter) = self.0.dynamic_table.read().get(&(cid as u64)) {
             //存在指定的动态计时器
             return Some(PrefTimer(counter.clone()));
@@ -282,7 +282,7 @@ impl PrefCollect {
             return None;
         }
 
-        let cid = target.get_hash();
+        let cid = target.str_hash();
         let counter = Arc::new(AtomicUsize::new(init));
         self.0.static_collect.push((cid as u64, counter.clone()));
         Some(PrefCounter(counter))
@@ -295,7 +295,7 @@ impl PrefCollect {
             return None;
         }
 
-        let cid = target.get_hash();
+        let cid = target.str_hash();
         let counter = Arc::new(AtomicUsize::new(init));
         self.0.static_collect.push((cid as u64, counter.clone()));
         Some(PrefTimer(counter))
